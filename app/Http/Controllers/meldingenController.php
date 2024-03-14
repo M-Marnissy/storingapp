@@ -4,7 +4,8 @@
 $attractie = $_POST['attractie'];
 $capaciteit = $_POST['capaciteit'];
 $melder = $_POST['melder'];
-$type = "achtbaan";
+$type = $_POST['type'];
+
 
 echo $attractie . " / " . $capaciteit . " / " . $melder;
 
@@ -12,7 +13,7 @@ echo $attractie . " / " . $capaciteit . " / " . $melder;
 require_once '../../../config/conn.php';
 
 //2. Query
-$query="INSERT INTO meldingen(attractie,type, melder, capaciteit)VALUES(:attractie,:type ,:melder, :capaciteit)";
+$query="INSERT INTO meldingen(attractie,type, melder, capaciteit, prioriteit)VALUES(:attractie,:type ,:melder, :capaciteit, :prioriteit)";
 
 //3. Prepare
 $statement = $conn->prepare($query);
@@ -23,6 +24,7 @@ $statement->execute([
     ":type"=>$type,
     ":melder" => $melder,
     ":capaciteit"=>$capaciteit,
+    ":prioriteit"=>$prioriteit,
 ]);
 
 header(header: "Location: ../../../resources/views/meldingen/index.php?msg=Melding opgeslagen");
