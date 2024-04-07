@@ -1,15 +1,26 @@
-<?php require_once __DIR__.'/../../../config/config.php'; ?>
+<div>
+    <?php
+    if (!isset($_SESSION['user_id'])) { ?>
+        <a href="../../../login.php" style="color: lightgrey;">Inloggen</a>
+        <?php
+    } else { ?>
+        <a href="../../../logout.php" style="color: lightgrey;">uitloggen</a>
+        <?php
+    }
+    ?>
+</div>
+<?php require_once __DIR__ . '/../../../config/config.php'; ?>
 <!doctype html>
 <html lang="nl">
 
 <head>
     <title>StoringApp / Meldingen / Nieuw</title>
-    <?php require_once __DIR__.'/../components/head.php'; ?>
+    <?php require_once __DIR__ . '/../components/head.php'; ?>
 </head>
 
 <body>
 
-    <?php require_once __DIR__.'/../components/header.php'; ?>
+    <?php require_once __DIR__ . '/../components/header.php'; ?>
 
     <div class="container">
         <h1>Nieuwe melding</h1>
@@ -50,7 +61,7 @@
             <input type="submit" value="Verstuur melding">
 
             <input type="hidden" name="action" value="create">
-            
+
 
         </form>
     </div>
